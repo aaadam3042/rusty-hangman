@@ -4,7 +4,7 @@ Fun CLI-game project to learn Rust lang
 ## How to Play
 
 1. Clone the repository: `git clone https://github.com/your-username/rusty-hangman.git`
-2. Navigate to the project directory: `cd rusty-hangman`
+2. Navigate to the project directory: `cd rusty-hangman/app`
 3. Build the project: `cargo build`
 4. Run the game: `cargo run`
 5. Follow the on-screen instructions to play the game.
