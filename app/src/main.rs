@@ -9,8 +9,7 @@ use crate::utils::clear_terminal;
 fn main() {
     println!("Welcome to Rusty Hangman!");
     
-    let username = utils::get_input("What is your name: ".to_string());
-    println!("Hello, {}!", username);   
+    println!("Starting new game!");   
 
     let word = fs::read_to_string("src/resources/dictionary.txt").expect("Error reading file");
     let lines = word.lines().count();
@@ -35,14 +34,19 @@ fn main() {
         
         
         // Check if guess is a single char
-        if guess.len() > 1 {
-            println!("Please enter a single letter");
+        if guess.len() > 1 || guess.len() == 0 {
             clear_terminal();
+            println!("Please enter a single letter");
             continue;
         }
         
-        let guess_c = guess.chars().next().unwrap();    // TODO: Need to handle empty char - implement to only accept letters
-        
+        let guess_c = guess.chars().next().unwrap();    
+        if !guess_c.is_alphabetic() {
+            clear_terminal();
+            println!("Please enter a letter");
+            continue;
+        }
+
         // Check if the letter has already been guessed
         if guessed_letters.contains(&guess_c) {
             println!("You've already guessed that letter");
