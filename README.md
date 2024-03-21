@@ -15,7 +15,6 @@ Fun CLI-game project to learn Rust lang
 - Randomly selected word for each game.
 - Keep track of the number of attempts and the letters guessed.
 - Display the hangman ASCII art as the game progresses.
-- Option to play again after winning or losing.
 
 ## Requirements
 

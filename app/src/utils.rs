@@ -7,3 +7,8 @@ pub fn get_input(s1: String) -> String {
     io::stdin().read_line(&mut input).unwrap();
     input.trim().to_string()
 }
+
+pub fn clear_terminal() {
+    print!("{}[2J", 27 as char); 
+    io::stdout().flush().unwrap();          
+}
