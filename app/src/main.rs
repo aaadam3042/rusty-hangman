@@ -2,14 +2,13 @@ mod utils;
 mod ui;
 use std::fs;
 use rand::Rng;
-use std::io::{self, Write};
-
 use crate::utils::clear_terminal;
 
 fn main() {
     println!("Welcome to Rusty Hangman!");
     
     println!("Starting new game!");   
+    utils::clear_terminal();
 
     let word = fs::read_to_string("src/resources/dictionary.txt").expect("Error reading file");
     let lines = word.lines().count();
@@ -22,9 +21,7 @@ fn main() {
     let mut attempt = 0;
     let mut guessed_word = "_".repeat(chosen_word.len());
 
-    let mut guessing = true;
-
-    while guessing && attempt < total_attempts {
+    while attempt < total_attempts {
         println!("{}", guessed_word.chars().map(|c| c.to_string()).collect::<Vec<_>>().join(" "));
 
         println!("Guesses left: {}", total_attempts - attempt); 
@@ -73,7 +70,6 @@ fn main() {
         if chosen_word == guessed_word {
             println!("Congratulations! You've guessed the word: {}", chosen_word);  
             println!("{}", ui::get_frame(attempt, true));
-            guessing = false;
             break;
         } else if attempt == total_attempts {
             println!("You lose! The word was: {}.", chosen_word);  
